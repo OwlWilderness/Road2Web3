@@ -1,4 +1,7 @@
+import Image from 'next/image'
+
 export const NFTCard = ({nft}) => {
+
     return (
         <div className="w-1/4 flex flex-col">
             <div className="rounded-md">
@@ -8,7 +11,12 @@ export const NFTCard = ({nft}) => {
                 <div className="">
                     <h2 className="text-xl text-grey-800" >{nft.title}</h2>
                     <p className="text-grey-600">{nft.id.tokenId.substr(nft.id.tokenId.length - 4)}</p>
-                    <p className="text-grey-600">{`${nft.contract.address.substr(0, 4)}...${nft.contract.address.substr(nft.contract.address.length - 4)}`}</p>
+                    <p className="text-grey-600">{`${nft.contract.address.substr(0, 4)}...${nft.contract.address.substr(nft.contract.address.length - 4)}`}
+                    <button className="ml-2" onClick={() =>  navigator.clipboard.writeText(nft.contract.address)}><Image
+                        src={require('./icons8-copy-24.png')}          
+                    /></button>
+                    </p>
+                    
                 </div>
 
                 <div className="flex-grow mt-2">
